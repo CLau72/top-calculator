@@ -43,3 +43,15 @@ button {
     margin-top: 20px;
     gap: 20px;
 }
+
+.number {
+    background-color: whitesmoke;
+}
+
+.operator {
+    background-color: blanchedalmond;
+}
+
+.clear {
+    background-color: orangered;
+}
