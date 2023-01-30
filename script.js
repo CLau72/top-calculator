@@ -1,22 +1,31 @@
-const display = document.querySelector('.display')
+let firstDigit = 0;
+let secondDigit = 0;
+let operand = "";
+let result = 0;
 
+const display = document.querySelector('.display')
 const numberButtons = document.querySelectorAll('.number');
+const clearButton = document.querySelector('.clear');
+const operandButtons = document.querySelectorAll('.operator')
+const equalButton = document.querySelector('.equal')
+
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener('click',() => {
         if (display.textContent === '0') {
             display.textContent = '';
         }
+        if (display.textContent.length < 7) {
         display.textContent += numberButton.textContent;
+        }
     });
 })
 
-const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click' ,() => {
     display.textContent = 0;
 })
 
 function updateDisplay(value) {
-  return 0;    
+  display.textContent = value;    
 }
 
 // Basic Math Functions
