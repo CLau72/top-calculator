@@ -32,8 +32,9 @@ button {
     border-radius: 10px;
     margin-top: 20px;
     font-family: 'Orbitron', sans-serif;
-    font-size: 80px;
+    font-size: 78px;
     text-align: right;
+    padding-right: 5px;
 }
 
 .buttons {
