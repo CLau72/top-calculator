@@ -81,6 +81,7 @@ equalButton.addEventListener('click',() => {
     firstDigit = result;
     secondDigit = 0;
     operand = '';
+    clearDisplay = true;
     display.textContent = result;
 })
 
@@ -98,7 +99,7 @@ function multiply(a,b) {
 }
 
 function divide(a,b) {
-    return a / b;
+    return Math.round(a / b);
 }
 
 function operate (operator,a,b) {
