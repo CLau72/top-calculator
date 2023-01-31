@@ -23,6 +23,35 @@ numberButtons.forEach((numberButton) => {
     });
 })
 
+//Add functionality to operand buttons
+operandButtons.forEach((operandButton)=> {
+    operandButton.addEventListener('click', () => {
+        // Set operand value based on text content of button
+        switch (operandButton.textContent) {
+            case '+':
+                operand = add;
+                console.log('add');
+                break;
+            case '-':
+                operand = subtract;
+                console.log('subtract');
+                break;
+            case 'x':
+                operand = multiply;
+                console.log('multiply');
+                break;
+            case '÷':
+                operand = divide;
+                console.log('divide');
+                break;
+        }
+        if (!firstDigit) {
+            firstDigit = parseInt(display.textContent)
+            display.textContent = 0;
+        }
+    })
+})
+
 // Clear button clears display and all math variables
 clearButton.addEventListener('click' ,() => {
     display.textContent = 0;
