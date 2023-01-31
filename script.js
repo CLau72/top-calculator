@@ -3,6 +3,7 @@ let firstDigit = 0;
 let secondDigit = 0;
 let operand = "";
 let result = 0;
+let clearDisplay = false;
 
 // Variables for DOM elements
 const display = document.querySelector('.display')
@@ -14,8 +15,9 @@ const equalButton = document.querySelector('.equal')
 // Number buttons change display
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener('click',() => {
-        if (display.textContent === '0') {
+        if (display.textContent === '0' || clearDisplay) {
             display.textContent = '';
+            clearDisplay = false;
         }
         if (display.textContent.length < 7) {
         display.textContent += numberButton.textContent;
@@ -47,7 +49,14 @@ operandButtons.forEach((operandButton)=> {
         }
         if (!firstDigit) {
             firstDigit = parseInt(display.textContent)
-            display.textContent = 0;
+            clearDisplay = true;
+        } else if (firstDigit && operand) {
+            secondDigit = parseInt(display.textContent)
+            result = operate(operand, firstDigit, secondDigit)
+            firstDigit = result;
+            secondDigit = 0;
+            operand = '';
+            display.textContent = result; 
         }
     })
 })
@@ -55,11 +64,16 @@ operandButtons.forEach((operandButton)=> {
 // Clear button clears display and all math variables
 clearButton.addEventListener('click' ,() => {
     display.textContent = 0;
+    firstDigit = 0;
+    secondDigit = 0;
+    operand = '';
+    result = 0;
 })
 
 // Evaluate the math operation
 equalButton.addEventListener('click',() => {
-    if (firstDigit && secondDigit && operand)
+    if (firstDigit && operand)
+    secondDigit = parseInt(display.textContent)
     result = operate(operand, firstDigit, secondDigit)
     firstDigit = result;
     secondDigit = 0;
