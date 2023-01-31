@@ -84,12 +84,7 @@ equalButton.addEventListener('click',() => {
     display.textContent = result;
 })
 
-function updateDisplay(value) {
-  display.textContent = value;    
-}
-
 // Basic Math Functions
-
 function add(a,b) {
     return a + b;
 }
