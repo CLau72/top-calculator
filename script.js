@@ -24,6 +24,15 @@ clearButton.addEventListener('click' ,() => {
     display.textContent = 0;
 })
 
+equalButton.addEventListener('click',() => {
+    if (firstDigit && secondDigit && operand)
+    result = operate(operand, firstDigit, secondDigit)
+    firstDigit = result;
+    secondDigit = 0;
+    operand = '';
+    display.textContent = result;
+})
+
 function updateDisplay(value) {
   display.textContent = value;    
 }
