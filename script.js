@@ -28,6 +28,15 @@ numberButtons.forEach((numberButton) => {
 //Add functionality to operand buttons
 operandButtons.forEach((operandButton)=> {
     operandButton.addEventListener('click', () => {
+        // Check if a previous operation needs completed
+        if (firstDigit && operand) {
+            secondDigit = parseInt(display.textContent)
+            result = operate(operand, firstDigit, secondDigit)
+            firstDigit = result;
+            secondDigit = 0;
+            clearDisplay = true;
+            display.textContent = result; 
+        }
         // Set operand value based on text content of button
         switch (operandButton.textContent) {
             case '+':
@@ -47,17 +56,11 @@ operandButtons.forEach((operandButton)=> {
                 console.log('divide');
                 break;
         }
+        // set first digit if starting from clear state
         if (!firstDigit) {
             firstDigit = parseInt(display.textContent)
             clearDisplay = true;
-        } else if (firstDigit && operand) {
-            secondDigit = parseInt(display.textContent)
-            result = operate(operand, firstDigit, secondDigit)
-            firstDigit = result;
-            secondDigit = 0;
-            operand = '';
-            display.textContent = result; 
-        }
+        }  
     })
 })
 
